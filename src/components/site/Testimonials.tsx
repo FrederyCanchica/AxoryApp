@@ -1,0 +1,78 @@
+import { useI18n } from "@/lib/i18n";
+import { useReveal } from "@/hooks/use-reveal";
+
+export const Testimonials = () => {
+  const { t, lang } = useI18n();
+  const ref = useReveal<HTMLDivElement>();
+
+  const items = lang === "es"
+    ? [
+        {
+          q: "Pasamos de perder citas por WhatsApp a tener la agenda llena dos semanas por delante. El sistema trabaja por nosotros.",
+          a: "Lucía R.",
+          r: "Estudio de tatuaje · Madrid",
+        },
+        {
+          q: "El agente IA contesta a las 11 de la noche y agenda. Antes era yo, ahora es el sistema. Recuperé mis tardes.",
+          a: "David M.",
+          r: "Barber Shop · Valencia",
+        },
+        {
+          q: "Diseño que parece de marca grande con presupuesto de autónomo. Los clientes nos toman más en serio.",
+          a: "Marta G.",
+          r: "Estudio creativo · Bilbao",
+        },
+      ]
+    : [
+        {
+          q: "We went from losing WhatsApp leads to a fully booked agenda two weeks ahead. The system does the work.",
+          a: "Lucía R.",
+          r: "Tattoo studio · Madrid",
+        },
+        {
+          q: "The AI agent answers at 11pm and books the slot. It used to be me — now it's the system. I got my evenings back.",
+          a: "David M.",
+          r: "Barber shop · Valencia",
+        },
+        {
+          q: "Big-brand design on a freelancer budget. Clients take us more seriously.",
+          a: "Marta G.",
+          r: "Creative studio · Bilbao",
+        },
+      ];
+
+  return (
+    <section className="bg-carbon text-bone py-24 md:py-36 grain relative">
+      <div ref={ref} className="container-editorial reveal">
+        <div className="mb-16 md:mb-20">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="block w-10 h-px bg-oxblood" />
+            <span className="label-eyebrow text-bone/60">— 007 / {t("test.eyebrow")}</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] max-w-4xl">
+            {t("test.title")}
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-px bg-bone/10">
+          {items.map((it, i) => (
+            <figure key={i} className="bg-carbon p-8 md:p-10 flex flex-col">
+              <span className="font-display text-6xl text-oxblood-glow leading-none mb-6">"</span>
+              <blockquote className="font-display text-xl md:text-2xl leading-snug text-bone/95 mb-8 flex-1">
+                {it.q}
+              </blockquote>
+              <figcaption className="border-t border-bone/15 pt-4">
+                <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-bone">
+                  {it.a}
+                </div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/50 mt-1">
+                  {it.r}
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
