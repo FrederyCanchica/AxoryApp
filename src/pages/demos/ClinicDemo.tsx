@@ -62,18 +62,34 @@ const ClinicDemo = () => {
   useEffect(() => {
     if (!chatOpen) return;
     let i = 1;
+    let cancelled = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const schedule = (fn: () => void, ms: number) => {
+      const id = setTimeout(() => {
+        if (cancelled) return;
+        fn();
+      }, ms);
+      timers.push(id);
+    };
     const tick = () => {
       if (i >= SCRIPT.length) return;
       setTyping(true);
-      setTimeout(() => {
+      schedule(() => {
         setTyping(false);
-        setMessages((m) => [...m, SCRIPT[i]]);
+        const next = SCRIPT[i];
+        if (!next) return;
+        setMessages((m) => [...m, next]);
         i++;
-        setTimeout(tick, SCRIPT[i]?.role === "user" ? 1100 : 1900);
+        if (i < SCRIPT.length) {
+          schedule(tick, SCRIPT[i]?.role === "user" ? 1100 : 1900);
+        }
       }, 1300);
     };
-    const t = setTimeout(tick, 1500);
-    return () => clearTimeout(t);
+    schedule(tick, 1500);
+    return () => {
+      cancelled = true;
+      timers.forEach(clearTimeout);
+    };
   }, [chatOpen]);
 
   useEffect(() => {
@@ -554,7 +570,7 @@ const ClinicDemo = () => {
             <button onClick={() => { setChatOpen(false); setMessages([SCRIPT[0]]); }} className="text-white/70 hover:text-white text-xl leading-none w-8 h-8">×</button>
           </div>
           <div ref={chatRef} className="flex-1 overflow-y-auto p-4 space-y-3" style={{ background: "var(--vc-grey-soft)" }}>
-            {messages.map((m, i) => (
+            {messages.filter(Boolean).map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className="max-w-[80%] px-4 py-2.5 text-sm rounded-2xl"
