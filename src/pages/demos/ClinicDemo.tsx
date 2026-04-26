@@ -62,18 +62,34 @@ const ClinicDemo = () => {
   useEffect(() => {
     if (!chatOpen) return;
     let i = 1;
+    let cancelled = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const schedule = (fn: () => void, ms: number) => {
+      const id = setTimeout(() => {
+        if (cancelled) return;
+        fn();
+      }, ms);
+      timers.push(id);
+    };
     const tick = () => {
       if (i >= SCRIPT.length) return;
       setTyping(true);
-      setTimeout(() => {
+      schedule(() => {
         setTyping(false);
-        setMessages((m) => [...m, SCRIPT[i]]);
+        const next = SCRIPT[i];
+        if (!next) return;
+        setMessages((m) => [...m, next]);
         i++;
-        setTimeout(tick, SCRIPT[i]?.role === "user" ? 1100 : 1900);
+        if (i < SCRIPT.length) {
+          schedule(tick, SCRIPT[i]?.role === "user" ? 1100 : 1900);
+        }
       }, 1300);
     };
-    const t = setTimeout(tick, 1500);
-    return () => clearTimeout(t);
+    schedule(tick, 1500);
+    return () => {
+      cancelled = true;
+      timers.forEach(clearTimeout);
+    };
   }, [chatOpen]);
 
   useEffect(() => {
