@@ -42,17 +42,17 @@ export const ClinicLayout = () => {
     };
     const tick = () => {
       if (i >= SCRIPT.length) return;
+      const current = SCRIPT[i];
+      const typingDelay = current?.role === "user" ? 900 : 1700;
       setTyping(true);
       schedule(() => {
         setTyping(false);
-        const next = SCRIPT[i];
-        if (!next) return;
-        setMessages((m) => [...m, next]);
+        if (!current) return;
+        setMessages((m) => [...m, current]);
         i++;
-        if (i < SCRIPT.length) schedule(tick, SCRIPT[i]?.role === "user" ? 1100 : 2200);
-      }, next_delay(SCRIPT[i]));
+        if (i < SCRIPT.length) schedule(tick, 700);
+      }, typingDelay);
     };
-    function next_delay(m?: Msg) { return m?.role === "user" ? 900 : 1500; }
     schedule(tick, 1400);
     return () => { cancelled = true; timers.forEach(clearTimeout); };
   }, [chatOpen]);
