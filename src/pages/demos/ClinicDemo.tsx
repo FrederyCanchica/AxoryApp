@@ -570,7 +570,7 @@ const ClinicDemo = () => {
             <button onClick={() => { setChatOpen(false); setMessages([SCRIPT[0]]); }} className="text-white/70 hover:text-white text-xl leading-none w-8 h-8">×</button>
           </div>
           <div ref={chatRef} className="flex-1 overflow-y-auto p-4 space-y-3" style={{ background: "var(--vc-grey-soft)" }}>
-            {messages.map((m, i) => (
+            {messages.filter(Boolean).map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
                   className="max-w-[80%] px-4 py-2.5 text-sm rounded-2xl"
