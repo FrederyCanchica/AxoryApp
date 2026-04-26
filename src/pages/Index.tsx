@@ -18,7 +18,7 @@ const Index = () => {
   useEffect(() => {
     document.title = "MR_ROBOTS LABS — Webs inteligentes y automatización para negocios";
     const meta = document.querySelector('meta[name="description"]');
-    const desc = "Estudio de diseño y automatización. Smart Presence, Smart Booking y AI Receptionist para captar clientes y ahorrar tiempo.";
+    const desc = "Estudio de desarrollo web y automatización. Smart Presence, Smart Booking y AI Receptionist para captar clientes y ahorrar tiempo.";
     if (meta) meta.setAttribute("content", desc);
     else {
       const m = document.createElement("meta");

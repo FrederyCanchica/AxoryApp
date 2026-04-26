@@ -10,10 +10,10 @@ export const FAQ = () => {
     ? [
         { q: "¿Cuánto tarda en estar lista mi web?", a: "Smart Presence en 7-10 días. Smart Booking en 2-3 semanas. AI Receptionist en 3-5 semanas según integraciones." },
         { q: "¿Puedo editar la web yo después?", a: "Sí. Te entregamos un panel sencillo y formación grabada. Si prefieres no tocar nada, ofrecemos planes de mantenimiento mensual." },
-        { q: "¿El agente IA habla por WhatsApp?", a: "Sí. Conectamos el bot a WhatsApp Business, web, Instagram DM o el canal que uses. Responde 24/7 con tu tono." },
-        { q: "¿Y si ya tengo web?", a: "Auditamos lo que tienes. Si funciona, automatizamos encima. Si no, te decimos honestamente que mejor empezar de cero." },
+        { q: "¿El agente IA habla por WhatsApp?", a: "Sí. Conectamos el bot a WhatsApp Business, web, Instagram DM o el canal que uses. Juntos lo podemos entrenar para que responda 24/7 con tu tono." },
+        { q: "¿Y si ya tengo web?", a: "La evaluamos sin coste. Si es sólida, construimos encima. Si creemos que te va a salir más caro parchearla que actualizarla, te daremos una opinión profesional basada en datos para que tú decidas." },
         { q: "¿Cómo se factura?", a: "50% al inicio, 50% a la entrega. Aceptamos transferencia, tarjeta y Bizum. Factura con IVA siempre." },
-        { q: "¿Trabajáis fuera de España?", a: "Sí, atendemos clientes en toda la Unión Europea y Latinoamérica. Reuniones por videollamada." },
+        { q: "¿Trabajáis fuera de España?", a: "Sí, trabajamos con clientes en toda la Unión Europea, Norteamérica y Latinoamérica. Todas nuestras reuniones son por videollamada para que la distancia no sea un freno." },
       ]
     : [
         { q: "How long until my site is ready?", a: "Smart Presence in 7–10 days. Smart Booking in 2–3 weeks. AI Receptionist in 3–5 weeks depending on integrations." },

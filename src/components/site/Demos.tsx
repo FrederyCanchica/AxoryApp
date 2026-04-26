@@ -72,7 +72,7 @@ export const Demos = () => {
                 <Button asChild variant="bone" size="sm" className="!bg-bone !text-carbon">
                   <Link to={`/demos/${d.slug}`}>{t("demos.view")}</Link>
                 </Button>
-                <Button asChild variant="oxblood" size="sm">
+                <Button asChild variant="oxblood" size="sm" className="tracking-normal uppercase text-[12px]">
                   <a href="#contact">{t("demos.want")}</a>
                 </Button>
               </div>

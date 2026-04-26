@@ -5,10 +5,10 @@ const ITEMS = [
   "Smart Booking",
   "AI Receptionist",
   "n8n Automation",
-  "Brand Systems",
-  "Conversion Design",
-  "WhatsApp Funnels",
-  "Calendar Sync",
+  "Sistemas de Marca",
+  "SUBE las Ventas",
+  "Funnels de WhatsApp",
+  "Sync de Calendario",
 ];
 
 export const Marquee = () => {

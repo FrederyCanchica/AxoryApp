@@ -18,7 +18,7 @@ export const Testimonials = () => {
           r: "Barber Shop · Valencia",
         },
         {
-          q: "Diseño que parece de marca grande con presupuesto de autónomo. Los clientes nos toman más en serio.",
+          q: "Mi pagina web que parece de marca grande con presupuesto de autónomo. Los clientes nos toman más en serio.",
           a: "Marta G.",
           r: "Estudio creativo · Bilbao",
         },

@@ -19,12 +19,12 @@ export const Hero = () => {
       {/* Top index bar */}
       <div className="container-editorial relative z-10 flex items-center justify-between border-b border-bone/10 pb-4 mb-10 md:mb-16">
         <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-bone/50">
-          Index — 001 / Studio
+           — 001  / Studio
         </span>
         <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-bone/50 hidden md:inline">
-          Madrid · 24/7 systems
+          / 24/7 systems
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-oxblood-glow">
+        <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-emerald-400">
           ● Available
         </span>
       </div>

@@ -38,7 +38,10 @@ export const Navbar = () => {
     >
       <div className="container-editorial flex h-16 md:h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group" aria-label="MR_ROBOTS LABS">
-          <span className="font-mono text-[11px] tracking-[0.22em] uppercase">
+          <span className={cn(
+          "font-mono text-[11px] tracking-[0.22em] uppercase transition-colors",
+            scrolled ? "text-foreground" : "text-bone"
+            )}>
             MR_ROBOTS<span className="text-oxblood">/</span>LABS
           </span>
         </Link>
@@ -48,7 +51,11 @@ export const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70 hover:text-oxblood transition-colors"
+              className={cn( "font-mono text-[11px] uppercase tracking-[0.18em] transition-colors",
+              scrolled
+                ? "text-foreground/70 hover:text-oxblood"
+                : "text-bone hover:text-oxblood"
+            )}
             >
               {l.label}
             </a>
@@ -58,7 +65,11 @@ export const Navbar = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setLang(lang === "es" ? "en" : "es")}
-            className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70 hover:text-oxblood transition-colors px-2 py-1 border border-foreground/15 rounded-sm"
+            className={cn( "font-mono text-[11px] uppercase tracking-[0.18em] transition-colors",
+              scrolled
+                ? "text-foreground/70 hover:text-oxblood"
+                : "text-bone hover:text-oxblood"
+            )}
             aria-label="Toggle language"
           >
             {lang === "es" ? "EN" : "ES"}
