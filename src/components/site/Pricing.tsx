@@ -106,7 +106,7 @@ export const Pricing = () => {
               )}
             >
               {p.featured && (
-                <span className="absolute -top-3 left-8 bg-oxblood text-bone font-mono text-[10px] uppercase tracking-[0.22em] px-3 py-1">
+                <span className="absolute -top-3 left-8 bg-oxblood text-carbon font-mono text-[10px] uppercase tracking-[0.22em] px-3 py-1 rounded-sm">
                   {t("pricing.recommended")}
                 </span>
               )}

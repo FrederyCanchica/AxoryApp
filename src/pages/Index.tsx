@@ -5,7 +5,6 @@ import { Marquee } from "@/components/site/Marquee";
 import { Value } from "@/components/site/Value";
 import { Demos } from "@/components/site/Demos";
 import { Pricing } from "@/components/site/Pricing";
-import { Cases } from "@/components/site/Cases";
 import { Process } from "@/components/site/Process";
 import { Testimonials } from "@/components/site/Testimonials";
 import { LeadMagnet } from "@/components/site/LeadMagnet";
@@ -16,9 +15,10 @@ import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "MR_ROBOTS LABS — Webs inteligentes y automatización para negocios";
+    document.title = "aXory — Sistemas web que trabajan por ti";
+    const desc =
+      "aXory diseña sistemas web inteligentes y automatización con IA para negocios que quieren crecer: presencia digital premium, reservas online y agentes IA 24/7.";
     const meta = document.querySelector('meta[name="description"]');
-    const desc = "Estudio de desarrollo web y automatización. Smart Presence, Smart Booking y AI Receptionist para captar clientes y ahorrar tiempo.";
     if (meta) meta.setAttribute("content", desc);
     else {
       const m = document.createElement("meta");
@@ -27,7 +27,6 @@ const Index = () => {
       document.head.appendChild(m);
     }
 
-    // JSON-LD
     const ldId = "ld-org";
     const existing = document.getElementById(ldId);
     if (existing) existing.remove();
@@ -37,7 +36,7 @@ const Index = () => {
     script.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      name: "MR_ROBOTS LABS",
+      name: "aXory",
       description: desc,
       url: window.location.origin,
       areaServed: ["ES", "EU", "LATAM"],
@@ -54,7 +53,6 @@ const Index = () => {
       <Value />
       <Demos />
       <Pricing />
-      <Cases />
       <Process />
       <Testimonials />
       <LeadMagnet />
