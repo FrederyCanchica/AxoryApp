@@ -119,7 +119,7 @@ export const Demos = () => {
     <article key={d.slug} className="group flex flex-col">
       <Link
         to={`/demos/${d.slug}`}
-        className="relative block aspect-[3/4] overflow-hidden border border-bone/10"
+        className="relative block aspect-[3/4] overflow-hidden rounded-xl border border-bone/10"
       >
         <img
           src={d.img}
