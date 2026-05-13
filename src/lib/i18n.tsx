@@ -203,7 +203,7 @@ const dict: Record<Lang, Dict> = {
     "contact.calendar": "Book a call",
     "contact.form": "Send message",
 
-    "footer.tagline": "Design and automation studio for real businesses.",
+    "footer.tagline": "Web systems that work for you.",
     "footer.rights": "All rights reserved.",
   },
 };
