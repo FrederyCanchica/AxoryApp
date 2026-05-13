@@ -4,50 +4,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* MR_ROBOTS LABS — Editorial Design System
-   Premium, sober, technological, secure.
-   90% neutrals · 10% oxblood accent
+/* aXory — Design System
+   Black · Prussian Blue · Orange · Alabaster · White
+   5 colors. Zero improvisations.
 */
 
 @layer base {
   :root {
     /* Core palette — HSL */
-    --background: 28 18% 93%;          /* Off-white #F4F1EB */
-    --foreground: 0 0% 7%;             /* Carbon #111111 */
+    --background: 0 0% 100%;           /* White #FFFFFF */
+    --foreground: 0 0% 0%;             /* Black #000000 */
 
-    --carbon: 0 0% 7%;                 /* #111111 */
-    --graphite: 0 0% 12%;              /* #1E1E1E */
-    --graphite-soft: 0 0% 18%;
-    --bone: 28 18% 93%;                /* #F4F1EB */
-    --bone-dim: 28 14% 88%;
-    --oxblood: 351 56% 27%;            /* #6D1F2B */
-    --oxblood-glow: 351 56% 35%;
-    --hairline: 0 0% 7% / 0.12;
+    --carbon: 0 0% 0%;                 /* Black #000000 */
+    --graphite: 219 51% 16%;           /* Prussian Blue #14213D */
+    --graphite-soft: 219 51% 22%;
+    --bone: 0 0% 100%;                 /* White #FFFFFF */
+    --bone-dim: 0 0% 90%;              /* Alabaster #E5E5E5 */
+    --oxblood: 36 98% 53%;             /* Orange #FCA311 */
+    --oxblood-glow: 36 91% 47%;        /* Orange hover #E8940A */
+    --hairline: 0 0% 0% / 0.10;
 
-    --card: 28 18% 93%;
-    --card-foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 28 18% 93%;
-    --popover-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 0 0% 7%;
-    --primary-foreground: 28 18% 93%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 28 14% 88%;
-    --secondary-foreground: 0 0% 7%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 28 14% 88%;
-    --muted-foreground: 0 0% 32%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 219 51% 16%;
 
-    --accent: 351 56% 27%;
-    --accent-foreground: 28 18% 93%;
+    --accent: 36 98% 53%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 351 56% 27%;
-    --destructive-foreground: 28 18% 93%;
+    --destructive: 36 98% 53%;
+    --destructive-foreground: 0 0% 0%;
 
-    --border: 0 0% 7%;
-    --input: 0 0% 7%;
-    --ring: 351 56% 27%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 36 98% 53%;
 
     --radius: 0.25rem;
 
