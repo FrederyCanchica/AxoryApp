@@ -101,7 +101,7 @@
 
   ::selection {
     background: hsl(var(--oxblood));
-    color: hsl(var(--bone));
+    color: hsl(var(--carbon));
   }
 
   h1, h2, h3, h4 {
