@@ -101,8 +101,8 @@ export const Pricing = () => {
             <div
               key={p.key}
               className={cn(
-                "relative p-8 md:p-10 flex flex-col",
-                p.featured ? "bg-carbon text-bone" : "bg-background text-foreground",
+                "reveal-item relative p-8 md:p-10 flex flex-col",
+                p.featured ? "glow-card bg-carbon text-bone" : "bg-background text-foreground",
               )}
             >
               {p.featured && (
