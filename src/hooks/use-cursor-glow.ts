@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 
 /**
- * Tracks the mouse globally and writes --cursor-x / --cursor-y on the
- * document root using requestAnimationFrame to avoid jank.
- * Disabled on coarse-pointer devices (touch).
+ * Tracks the mouse and writes --cursor-x / --cursor-y on each element
+ * with [data-cursor-glow], `.glow-section`, or `.glow-card`, using
+ * coordinates RELATIVE to that element's bounding rect. This keeps the
+ * radial gradient anchored to the real cursor regardless of scroll or
+ * the element's position in the document.
+ * Disabled on coarse-pointer / reduced-motion devices.
  */
 export const useCursorGlow = () => {
   useEffect(() => {
@@ -11,22 +14,28 @@ export const useCursorGlow = () => {
     if (window.matchMedia("(hover: none)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let x = 0;
-    let y = 0;
-    let raf = 0;
-    let pending = false;
+    const selector = ".glow-section, .glow-card, [data-cursor-glow]";
 
-    const root = document.documentElement;
+    let cx = 0;
+    let cy = 0;
+    let pending = false;
+    let raf = 0;
 
     const flush = () => {
       pending = false;
-      root.style.setProperty("--cursor-x", `${x}px`);
-      root.style.setProperty("--cursor-y", `${y}px`);
+      const els = document.querySelectorAll<HTMLElement>(selector);
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        // Skip offscreen elements to save work
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        el.style.setProperty("--cursor-x", `${cx - r.left}px`);
+        el.style.setProperty("--cursor-y", `${cy - r.top}px`);
+      });
     };
 
     const onMove = (e: MouseEvent) => {
-      x = e.clientX;
-      y = e.clientY;
+      cx = e.clientX;
+      cy = e.clientY;
       if (!pending) {
         pending = true;
         raf = requestAnimationFrame(flush);
