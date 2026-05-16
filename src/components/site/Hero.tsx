@@ -77,7 +77,7 @@ export const Hero = () => {
           </div>
 
           <h1
-            className="font-display text-balance text-bone"
+            className="hero-title font-display text-balance text-bone"
             style={{
               fontSize: "clamp(52px, 7vw, 96px)",
               lineHeight: 0.95,

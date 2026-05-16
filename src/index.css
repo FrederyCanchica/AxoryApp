@@ -608,3 +608,38 @@
   }
   .hero-scroll-line { animation: none; opacity: 0.4; }
 }
+
+/* ============================================================
+   Hero — blue prussian cursor glow (fixed layer, lerp follow)
+============================================================ */
+.hero-cursor-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    500px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(99, 149, 255, 0.18),
+    rgba(20, 33, 61, 0.08) 40%,
+    transparent 70%
+  );
+  will-change: background;
+}
+/* Confine the fixed glow visually to the hero by clipping at its bounds */
+.hero-typo { isolation: isolate; }
+
+/* H1 hover — sutil halo azul al pasar el cursor sobre el título */
+.hero-title {
+  transition: text-shadow 400ms ease;
+}
+.hero-title:hover {
+  text-shadow: 0 0 40px rgba(99, 149, 255, 0.4);
+}
+
+@media (hover: none) {
+  .hero-cursor-glow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-cursor-glow { display: none; }
+  .hero-title:hover { text-shadow: none; }
+}
