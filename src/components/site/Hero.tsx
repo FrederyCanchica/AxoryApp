@@ -20,7 +20,7 @@ export const Hero = () => {
   })();
 
   return (
-    <section className="hero-typo noise-overlay relative min-h-screen bg-carbon text-bone overflow-hidden flex items-center pt-24 pb-32">
+    <section className="hero-typo noise-overlay relative min-h-screen bg-carbon text-bone overflow-hidden pt-24 md:pt-28 pb-32">
       {/* Ambient orbs */}
       <div aria-hidden className="hero-orb hero-orb-1" />
       <div aria-hidden className="hero-orb hero-orb-2" />
