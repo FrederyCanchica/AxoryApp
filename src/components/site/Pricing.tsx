@@ -3,7 +3,6 @@ import { useI18n } from "@/lib/i18n";
 import { useReveal } from "@/hooks/use-reveal";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { BorderBeam } from "./BorderBeam";
 
 export const Pricing = () => {
   const { t, lang } = useI18n();
@@ -84,27 +83,32 @@ export const Pricing = () => {
       <div ref={ref} className="container-editorial reveal">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-16 md:mb-20">
           <div className="lg:col-span-8">
-            
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] text-balance">
               {t("pricing.title")}
             </h2>
           </div>
-          
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-px bg-foreground/15 border border-foreground/15">
+        <div className="grid lg:grid-cols-3 gap-6 items-center">
           {plans.map((p, i) => (
             <div
               key={p.key}
               className={cn(
-                "reveal-item relative p-8 md:p-10 flex flex-col",
-                p.featured ? "glow-card bg-carbon text-bone" : "bg-background text-foreground",
+                "reveal-item relative flex flex-col",
+                p.featured
+                  ? "glow-card bg-carbon text-bone lg:-my-6 z-10 p-8 md:p-10 lg:py-14 shadow-[0_0_0_1px_#FCA311,0_24px_60px_rgba(252,163,17,0.15)]"
+                  : "bg-background text-foreground border border-foreground/15 opacity-[0.92] p-8 md:p-10",
               )}
             >
               {p.featured && (
-                <span className="absolute -top-3 left-8 bg-oxblood text-carbon font-mono text-[10px] uppercase tracking-[0.22em] px-3 py-1 rounded-sm">
-                  {t("pricing.recommended")}
-                </span>
+                <div className="absolute -top-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+                  <span className="bg-[#FCA311] text-black font-mono text-[11px] uppercase tracking-widest px-3 py-1">
+                    {t("pricing.recommended")}
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-[rgba(252,163,17,0.7)]">
+                    {t("pricing.urgency")}
+                  </span>
+                </div>
               )}
 
               <div className="flex items-baseline justify-between mb-2">
@@ -120,36 +124,47 @@ export const Pricing = () => {
                 {t(`pricing.${p.key}.tag`)}
               </p>
 
-              <div className="mb-8 pb-8 border-b border-current/15">
+              <div className="mb-6 pb-6 border-b border-current/15">
                 <span className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60">
                   {t("pricing.from")}
                 </span>
                 <div className="font-display text-5xl md:text-6xl mt-2">{p.price}</div>
+                <p className="font-mono text-[10px] uppercase tracking-wider opacity-50 mt-2">
+                  {t(`pricing.${p.key}.context`)}
+                </p>
               </div>
 
-              <ul className="flex-1 space-y-3 mb-10">
+              <ul className="flex-1 space-y-3 mb-6">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm leading-relaxed">
-                    <Check className={cn("h-4 w-4 mt-0.5 shrink-0", p.featured ? "text-oxblood-glow" : "text-oxblood")} strokeWidth={1.5} />
+                    <Check
+                      className={cn("h-4 w-4 mt-0.5 shrink-0", p.featured ? "text-oxblood-glow" : "text-oxblood")}
+                      strokeWidth={1.5}
+                    />
                     <span className="opacity-85">{f}</span>
                   </li>
                 ))}
               </ul>
 
+              <p className="font-mono text-[10px] text-center opacity-50 mb-6">
+                {t(`pricing.${p.key}.social`)}
+              </p>
+
               <Button
                 asChild
                 variant={p.featured ? "oxblood" : "editorial"}
                 size="lg"
-                className={cn("w-full", p.featured && "has-beam")}
+                className="w-full"
               >
-                <a href="#contact">
-                  {p.featured && <BorderBeam />}
-                  {t("pricing.cta")}
-                </a>
+                <a href="#contact">{t("pricing.cta")}</a>
               </Button>
             </div>
           ))}
         </div>
+
+        <p className="font-mono text-[11px] uppercase tracking-widest text-foreground/40 text-center mt-12">
+          {t("pricing.guarantee")}
+        </p>
       </div>
     </section>
   );
