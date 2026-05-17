@@ -17,18 +17,18 @@ export const Pricing = () => {
       features:
         lang === "es"
           ? [
-              "Landing premium 1 página",
+              "Presencia digital premium 1 página",
               "Branding digital esencial",
               "Botón WhatsApp flotante",
               "SEO técnico básico",
-              "Hosting y dominio guiado",
+              "Alojamiento web y configuración del dominio durante el primer año",
             ]
           : [
-              "Premium 1-page landing",
+              "Premium 1-page digital presence",
               "Essential digital branding",
               "Floating WhatsApp button",
               "Basic technical SEO",
-              "Hosting & domain setup",
+              "Hosting & domain setup for the first year",
             ],
     },
     {
@@ -84,17 +84,12 @@ export const Pricing = () => {
       <div ref={ref} className="container-editorial reveal">
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-16 md:mb-20">
           <div className="lg:col-span-8">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="block w-10 h-px bg-oxblood" />
-              <span className="label-eyebrow">— 004 / {t("pricing.eyebrow")}</span>
-            </div>
+            
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] text-balance">
               {t("pricing.title")}
             </h2>
           </div>
-          <div className="lg:col-span-4">
-            <p className="text-foreground/70 leading-relaxed">{t("pricing.body")}</p>
-          </div>
+          
         </div>
 
         <div className="grid lg:grid-cols-3 gap-px bg-foreground/15 border border-foreground/15">
