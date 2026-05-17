@@ -180,13 +180,28 @@ export const Demos = () => {
           {initialDemos.map((d, i) => renderCard(d, i))}
         </div>
 
+        <div className="mt-12 flex justify-center">
+          <Button
+            asChild
+            size="lg"
+            className="relative overflow-hidden bg-transparent border border-[#FCA311] text-[#FCA311] hover:bg-[#FCA311] hover:text-black transition-colors duration-200 font-mono uppercase tracking-[0.22em] text-[12px]"
+          >
+            <a href="#contact">
+              <BorderBeam />
+              {lang === "es" ? "Quiero una para mi negocio" : "I want one for my business"}
+            </a>
+          </Button>
+        </div>
+
         <div className="flex justify-center my-10 md:my-14">
-          <button
+          <Button
             onClick={toggle}
             aria-expanded={expanded}
             aria-controls="showroom-expanded"
-            className="group inline-flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.22em] text-bone border border-bone/25 hover:border-oxblood hover:text-bone bg-transparent hover:bg-oxblood transition-all duration-300 px-6 py-3"
+            size="lg"
+            className="relative overflow-hidden group bg-transparent border border-bone/25 hover:border-[#FCA311] text-bone hover:text-[#FCA311] hover:bg-transparent font-mono uppercase tracking-[0.22em] text-[12px]"
           >
+            <BorderBeam />
             <span>
               {expanded
                 ? lang === "es"
@@ -201,7 +216,7 @@ export const Demos = () => {
                 expanded ? "rotate-180" : "rotate-0"
               }`}
             />
-          </button>
+          </Button>
         </div>
 
         <div
