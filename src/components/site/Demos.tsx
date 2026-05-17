@@ -117,10 +117,10 @@ export const Demos = () => {
   };
 
   const renderCard = (d: DemoItem, i: number) => (
-    <article key={d.slug} className="group flex flex-col reveal-item">
+    <article key={d.slug} className="reveal-item">
       <Link
         to={`/demos/${d.slug}`}
-        className="glow-card relative block aspect-[3/4] overflow-hidden rounded-xl"
+        className="glow-card group relative block aspect-[3/4] overflow-hidden rounded-[12px] border border-white/[0.08] hover:border-[rgba(252,163,17,0.25)] transition-colors duration-200"
       >
         <img
           src={d.img}
@@ -128,38 +128,36 @@ export const Demos = () => {
           loading="lazy"
           width={1200}
           height={1500}
-          className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-carbon/90 via-carbon/20 to-transparent" />
-        <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/80 bg-carbon/60 backdrop-blur px-2 py-1 border border-bone/15">
-            DEMO_0{i + 1}
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-carbon bg-oxblood backdrop-blur px-2 py-1 rounded-sm">
-            {d.pkg}
-          </span>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/60 mb-1">
-            {d.niche[lang]}
-          </p>
-          <h3 className="font-display text-2xl md:text-3xl mb-2 leading-none">
+        {/* Top dark gradient for legibility */}
+        <div
+          className="absolute inset-x-0 top-0 h-1/2 pointer-events-none"
+          style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%)" }}
+        />
+        {/* Index tag */}
+        <span className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/70">
+          DEMO_0{i + 1}
+        </span>
+        {/* Identity block top-left */}
+        <div className="absolute top-4 left-4 right-4 flex flex-col gap-2">
+          <h3 className="font-display text-2xl md:text-3xl leading-none text-bone">
             {d.brand}
           </h3>
-          <p className="text-sm text-bone/70 leading-relaxed">{d.desc[lang]}</p>
+          <span className="self-start font-mono text-[10px] uppercase tracking-[0.22em] text-[#FCA311] border border-[#FCA311] bg-transparent px-2 py-1 rounded-sm">
+            {d.pkg}
+          </span>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone/70">
+            {d.niche[lang]} · {d.pkg}
+          </p>
         </div>
-        <div className="absolute top-1/2 right-4 -translate-y-1/2 h-9 w-9 rounded-full flex items-center justify-center bg-oxblood text-carbon opacity-0 group-hover:opacity-100 transition-opacity">
-          <ArrowUpRight className="h-4 w-4" />
+        {/* Hover primary CTA */}
+        <div className="absolute inset-x-0 bottom-6 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className="font-mono text-[12px] uppercase tracking-[0.22em] bg-[#FCA311] text-black px-5 py-3 rounded-[4px]">
+            {lang === "es" ? "Ver demo →" : "View demo →"}
+          </span>
         </div>
       </Link>
-      <div className="grid grid-cols-2 gap-2 mt-3">
-        <Button asChild variant="bone" size="sm" className="!bg-bone !text-carbon">
-          <Link to={`/demos/${d.slug}`}>{t("demos.view")}</Link>
-        </Button>
-        <Button asChild variant="oxblood" size="sm" className="tracking-normal uppercase text-[12px]">
-          <a href="#contact">{t("demos.want")}</a>
-        </Button>
-      </div>
     </article>
   );
 
