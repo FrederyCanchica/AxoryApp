@@ -53,11 +53,11 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Marquee />
-      <Value />
+      <ProblemSolution />
       <Demos />
+      <Process />
       <About />
       <Pricing />
-      <Process />
       <Testimonials />
       <LeadMagnet />
       <FAQ />
