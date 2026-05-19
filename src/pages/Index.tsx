@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Marquee } from "@/components/site/Marquee";
-import { Value } from "@/components/site/Value";
+import { ProblemSolution } from "@/components/site/ProblemSolution";
 import { About } from "@/components/site/About";
 import { Demos } from "@/components/site/Demos";
 import { Pricing } from "@/components/site/Pricing";
