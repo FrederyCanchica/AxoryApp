@@ -6,8 +6,8 @@ export const siteConfig = {
   whatsappPrefilled: "Hola, vengo desde la web de aXory. Me gustaría más información.",
   calendarUrl: "https://cal.com/axory/30min", // Cambia por tu Calendly/Cal.com
   email: "hola@axory.com",
-  // Webhook para leads (n8n / Zapier). Si está vacío, el formulario hace fallback a mailto.
-  leadsWebhookUrl: "",
+  // Webhook para leads (Make.com)
+  leadsWebhookUrl: "https://hook.eu1.make.com/cfv6pttumdhqvjh9ahya1fq9skolp4hz",
   social: {
     instagram: "https://instagram.com/",
     linkedin: "https://linkedin.com/",
