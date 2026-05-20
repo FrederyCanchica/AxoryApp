@@ -7,7 +7,7 @@ export const siteConfig = {
   calendarUrl: "https://cal.com/axory/30min", // Cambia por tu Calendly/Cal.com
   email: "hola@axory.com",
   // Webhook para leads (Make.com)
-  leadsWebhookUrl: "https://hook.eu1.make.com/cfv6pttumdhqvjh9ahya1fq9skolp4hz",
+  leadsWebhookUrl: "https://hook.eu1.make.com/cp378fml9g14ox5pbtvrhx68bf6r6o6f",
   social: {
     instagram: "https://instagram.com/",
     linkedin: "https://linkedin.com/",
