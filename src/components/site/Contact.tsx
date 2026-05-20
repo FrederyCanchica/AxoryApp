@@ -1,30 +1,39 @@
+import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { useReveal } from "@/hooks/use-reveal";
 import { siteConfig, whatsappLink } from "@/lib/site-config";
-import { MessageCircle, Calendar, Mail, ArrowUpRight } from "lucide-react";
+import { MessageCircle, Calendar, Mail, ArrowUpRight, X } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+
+// NOTE: Actualizar manualmente cada semana el número de huecos libres
+const CALENDLY_URL = "https://calendly.com/axory/consulta-30min";
 
 export const Contact = () => {
   const { t } = useI18n();
   const ref = useReveal<HTMLDivElement>();
+  const [calendlyOpen, setCalendlyOpen] = useState(false);
 
   const channels = [
     {
       Icon: MessageCircle,
       label: "Escríbenos ahora",
-      sub: "Respuesta en minutos · Sin formularios",
-      micro: "+34 600 000 000",
+      // NOTE: Actualizar manualmente cada semana el nº de huecos libres
+      sub: "Respuesta en minutos · Solo 3 huecos libres este mes",
+      micro: "🔥 ÚLTIMAS PLAZAS · +34 687 64 17 16",
       href: whatsappLink(),
       badge: "MÁS RÁPIDO",
       primary: true,
+      onClick: undefined as undefined | (() => void),
     },
     {
       Icon: Calendar,
       label: "Agenda una llamada",
       sub: "30 min · Gratuita · Sin ventas agresivas",
       micro: "Elige día y hora al instante",
-      href: siteConfig.calendarUrl,
+      href: "#",
       badge: null,
       primary: false,
+      onClick: () => setCalendlyOpen(true),
     },
     {
       Icon: Mail,
@@ -34,6 +43,7 @@ export const Contact = () => {
       href: `mailto:${siteConfig.email}`,
       badge: null,
       primary: false,
+      onClick: undefined,
     },
   ];
 
@@ -105,7 +115,7 @@ export const Contact = () => {
 
               <div className="mb-12 md:mb-16">
                 <h2 className="font-display text-5xl md:text-7xl lg:text-[120px] leading-[0.9] tracking-[-0.03em] mb-6">
-                  ¿Vamos a por más clientes?
+                  Agenda tu consulta gratuita esta semana
                 </h2>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 ml-1 md:ml-20">
                   <p className="text-bone/100 text-lg leading-relaxed">
@@ -132,8 +142,9 @@ export const Contact = () => {
             <a
               key={c.label}
               href={c.href}
-              target="_blank"
+              target={c.onClick ? undefined : "_blank"}
               rel="noreferrer"
+              onClick={c.onClick ? (e) => { e.preventDefault(); c.onClick!(); } : undefined}
               className="reveal-item group relative flex flex-col justify-between min-h-[280px] p-8 md:p-10 rounded-[4px] transition-all duration-300"
               style={{
                 border: c.primary
@@ -211,7 +222,40 @@ export const Contact = () => {
           +12 negocios activos · Respuesta media 47 min · 100% proyectos entregados
         </p>
 
+        <div className="text-center mt-2">
+          <span
+            className="font-mono text-[10px] uppercase tracking-wider inline-block"
+            style={{
+              color: "rgba(252,163,17,0.6)",
+              background: "rgba(252,163,17,0.05)",
+              border: "1px solid rgba(252,163,17,0.15)",
+              borderRadius: 4,
+              padding: "12px 20px",
+            }}
+          >
+            💬 Hace 6 días: Gestoría en Sevilla cerró su primer proyecto desde nuestra web → +4.200€ facturados
+          </span>
+        </div>
+
       </div>
+
+      <Dialog open={calendlyOpen} onOpenChange={setCalendlyOpen}>
+        <DialogContent className="max-w-4xl w-[95vw] p-0 overflow-hidden bg-background border-border">
+          <DialogTitle className="sr-only">Agenda una llamada</DialogTitle>
+          <button
+            onClick={() => setCalendlyOpen(false)}
+            className="absolute right-3 top-3 z-10 rounded-full bg-background/80 backdrop-blur p-2 hover:bg-background transition"
+            aria-label="Cerrar"
+          >
+            <X className="h-4 w-4" />
+          </button>
+          <iframe
+            src={CALENDLY_URL}
+            title="Calendly"
+            className="w-full h-[600px] md:h-[700px] border-0"
+          />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
