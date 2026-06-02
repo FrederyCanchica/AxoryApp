@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "Sistemas web que trabajan por ti",
   whatsappNumber: "34687641716", // Cambia este número por el real
   whatsappPrefilled: "Hola, vengo desde la web de aXory. Me gustaría más información.",
-  calendarUrl: "https://cal.com/axory/30min", // Cambia por tu Calendly/Cal.com
+  calendarUrl: "https://calendly.com/servicioitdomicilio/consulta-30min", // Cambia por tu Calendly/Cal.com
   email: "hola@axory.com",
   // Webhook para leads (Make.com)
   leadsWebhookUrl: "https://hook.eu1.make.com/cp378fml9g14ox5pbtvrhx68bf6r6o6f",

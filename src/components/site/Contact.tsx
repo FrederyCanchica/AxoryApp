@@ -6,7 +6,7 @@ import { MessageCircle, Calendar, Mail, ArrowUpRight, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 // NOTE: Actualizar manualmente cada semana el número de huecos libres
-const CALENDLY_URL = "https://calendly.com/axory/consulta-30min";
+const CALENDLY_URL = "https://calendly.com/servicioitdomicilio/consulta-30min";
 
 export const Contact = () => {
   const { t } = useI18n();
