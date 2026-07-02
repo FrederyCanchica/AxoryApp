@@ -499,7 +499,7 @@ const BeautyDemo = () => {
           <div className="lm-display text-2xl" style={{ color: "var(--lm-ink)" }}>Lumière Studio</div>
           <div>Calle Aribau 142 · 08036 Barcelona · 932 17 04 88</div>
           <Link to="/#demos" className="flex items-center gap-2 hover:text-[var(--lm-gold-deep)]">
-            <ArrowLeft className="w-3 h-3" /> Demo de MR_ROBOTS LABS
+            <ArrowLeft className="w-3 h-3" /> Demo de aXory
           </Link>
         </div>
       </footer>

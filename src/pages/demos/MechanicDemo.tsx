@@ -302,7 +302,7 @@ const MechanicDemo = () => {
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4 nf-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--nf-mute)" }}>
           <div>© 2025 NitroFix · Todos los derechos reservados</div>
           <Link to="/#demos" className="hover:text-orange-500 flex items-center gap-2">
-            <ArrowLeft className="w-3 h-3" /> Demo de MR_ROBOTS LABS
+            <ArrowLeft className="w-3 h-3" /> Demo de aXory
           </Link>
         </div>
       </footer>

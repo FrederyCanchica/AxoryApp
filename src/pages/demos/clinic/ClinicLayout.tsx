@@ -176,7 +176,7 @@ export const ClinicLayout = () => {
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4 text-sm" style={{ color: "var(--vc-mute)" }}>
           <div>© 2025 VitalCenter · Centro médico autorizado</div>
           <Link to="/#demos" className="flex items-center gap-2 hover:text-[var(--vc-mint-dark)]">
-            <ArrowLeft className="w-3 h-3" /> Demo de MR_ROBOTS LABS
+            <ArrowLeft className="w-3 h-3" /> Demo de aXory
           </Link>
         </div>
       </footer>

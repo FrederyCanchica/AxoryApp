@@ -484,7 +484,7 @@ const LegalDemo = () => {
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4 text-sm" style={{ color: "var(--lg-mute)" }}>
           <div>© 2025 Legalis &amp; Co · Colegiado ICAM 12.345</div>
           <Link to="/#demos" className="flex items-center gap-2 hover:text-[var(--lg-navy)]">
-            <ArrowLeft className="w-3 h-3" /> Demo de MR_ROBOTS LABS
+            <ArrowLeft className="w-3 h-3" /> Demo de aXory
           </Link>
         </div>
       </footer>
