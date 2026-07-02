@@ -20,7 +20,7 @@ const dict: Record<Lang, Dict> = {
     "ps.p2.desc": "WhatsApp, email, llamadas — siempre las mismas dudas. Pierdes horas explicando lo mismo una y otra vez.",
     "ps.p3.title": "Pierdes ventas fuera de horario",
     "ps.p3.desc": "El 40% de las consultas llegan después de las 8pm o los fines de semana. Cuando respondes, ya contrataron a otro.",
-    "ps.solution.eyebrow": "La solución",
+    
     "ps.solution.title": "Nosotros lo arreglamos con sistemas, no con diseño.",
     "ps.s1.title": "Automatización de captación",
     "ps.s1.desc": "Formularios inteligentes que cualifican leads automáticamente y los envían directamente a tu CRM.",
@@ -75,7 +75,7 @@ const dict: Record<Lang, Dict> = {
     "about.value2.desc": "IA, automatizaciones, integraciones — pero explicado como si se lo contaras a tu madre. Cero jerga, cero humo.",
     "about.value3.title": "Transparencia radical",
     "about.value3.desc": "Sin permanencias. Sin sorpresas en la factura. Primera consulta gratis. Cancelación cuando quieras.",
-    "about.closing": "Llevamos 12 proyectos activos. Todos siguen con nosotros. Eso dice más que cualquier testimonio.",
+    "about.closing": "Llevamos 12 proyectos activos, Todos siguen con nosotros Eso nos aprueba nuestra estrategia.",
 
     "pricing.eyebrow": "Paquetes",
     "pricing.title": "Tecnología diseñada para hacer crecer tu negocio.",
@@ -150,7 +150,7 @@ const dict: Record<Lang, Dict> = {
     "nav.pricing": "Packages",
     "nav.contact": "Contact",
 
-    "ps.problem.eyebrow": "The problem",
+    
     "ps.problem.title": "Your current website has a problem.",
     "ps.p1.title": "You get visits but not clients",
     "ps.p1.desc": "Your site gets traffic but conversion is 1-2%. 98% of visitors leave without contacting you.",

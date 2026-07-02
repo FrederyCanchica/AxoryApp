@@ -33,7 +33,7 @@ export const ProblemSolution = () => {
         <div ref={refProblems} className="container-editorial reveal-up">
           <div className="text-center mb-16 md:mb-20">
             <p className="font-mono text-[11px] uppercase tracking-widest text-bone/40 mb-6">
-              {t("ps.problem.eyebrow")}
+              
             </p>
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] text-balance mx-auto max-w-5xl">
               {t("ps.problem.title")}
@@ -77,7 +77,7 @@ export const ProblemSolution = () => {
         <div ref={refSolutions} className="container-editorial reveal-up">
           <div className="text-center mb-16 md:mb-20">
             <p className="font-mono text-[11px] uppercase tracking-widest text-[#0a0a0a]/40 mb-6">
-              {t("ps.solution.eyebrow")}
+              
             </p>
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] text-balance mx-auto max-w-5xl">
               {t("ps.solution.title")}
