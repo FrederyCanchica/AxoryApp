@@ -476,7 +476,7 @@ const RestaurantDemo = () => {
               Disponemos de carta de alérgenos completa. Consulte a nuestro personal sobre intolerancias alimentarias.
             </div>
             <Link to="/#demos" className="flex items-center gap-2 hover:text-[var(--so-gold)]">
-              <ArrowLeft className="w-3 h-3" /> Demo de MR_ROBOTS LABS
+              <ArrowLeft className="w-3 h-3" /> Demo de aXory
             </Link>
           </div>
         </div>

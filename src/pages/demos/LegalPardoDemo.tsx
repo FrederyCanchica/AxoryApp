@@ -463,7 +463,7 @@ const LegalPardoDemo = () => {
           <div className="pa-display text-xl" style={{ color: "var(--pa-slate)" }}>Pardo & Asociados</div>
           <div>Colegiados ICAM · 27 años de despacho</div>
           <Link to="/#demos" className="flex items-center gap-2 hover:text-[var(--pa-gold)]">
-            <ArrowLeft className="w-3 h-3" /> Demo de MR_ROBOTS LABS
+            <ArrowLeft className="w-3 h-3" /> Demo de aXory
           </Link>
         </div>
       </footer>
