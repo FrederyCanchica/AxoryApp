@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { ArrowLeft, Wrench, Gauge, Cog, ShieldCheck, Zap, Phone, MapPin, Clock, MessageCircle, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowLeft, Wrench, Gauge, Cog, ShieldCheck, Zap, Phone, MapPin, Clock, MessageCircle, ChevronRight, Menu, X } from "lucide-react";
 import mechanicHero from "@/assets/demo-mechanic.jpg";
 
 const SERVICES = [
@@ -22,6 +22,8 @@ const GALLERY = [
 ];
 
 const MechanicDemo = () => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
   useEffect(() => {
     document.title = "NitroFix · Taller Mecánico Premium";
   }, []);
@@ -123,12 +125,34 @@ const MechanicDemo = () => {
           </nav>
           <Link
             to="/#demos"
-            className="nf-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-2 hover:text-white"
+            className="hidden md:flex nf-mono text-[10px] uppercase tracking-[0.18em] items-center gap-2 hover:text-white"
             style={{ color: "var(--nf-mute)" }}
           >
             <ArrowLeft className="w-3 h-3" /> Portafolio
           </Link>
+          <button
+            className="md:hidden p-2"
+            style={{ color: "var(--nf-white)" }}
+            onClick={() => setMobileNavOpen((v) => !v)}
+            aria-label="Menú"
+            aria-expanded={mobileNavOpen}
+          >
+            {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {mobileNavOpen && (
+          <div className="md:hidden border-t" style={{ borderColor: "rgba(255,255,255,0.06)", background: "var(--nf-asphalt)" }}>
+            <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1 nf-mono text-[11px] uppercase tracking-[0.18em]" style={{ color: "var(--nf-mute)" }}>
+              <a href="#services" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>Servicios</a>
+              <a href="#gallery" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>Trabajos</a>
+              <a href="#contact" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "rgba(255,255,255,0.06)" }}>Contacto</a>
+              <Link to="/#demos" onClick={() => setMobileNavOpen(false)} className="nf-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-2 pt-4">
+                <ArrowLeft className="w-3 h-3" /> Portafolio
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

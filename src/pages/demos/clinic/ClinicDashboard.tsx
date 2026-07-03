@@ -152,20 +152,22 @@ const ClinicDashboard = () => {
             </div>
 
             <div className="rounded-2xl p-6" style={{ background: "var(--vc-grey-soft)" }}>
-              <div className="grid grid-cols-5 gap-2 items-start">
-                {FLOW.map((n, i) => (
-                  <div key={n.label} className="flex flex-col items-center text-center relative">
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-2 relative z-10 shadow-md" style={{ background: n.color, color: "white" }}>
-                      <n.icon className="w-6 h-6" strokeWidth={1.5} />
+              <div className="overflow-x-auto">
+                <div className="grid grid-cols-5 gap-2 items-start min-w-[520px]">
+                  {FLOW.map((n, i) => (
+                    <div key={n.label} className="flex flex-col items-center text-center relative">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-2 relative z-10 shadow-md" style={{ background: n.color, color: "white" }}>
+                        <n.icon className="w-6 h-6" strokeWidth={1.5} />
+                      </div>
+                      <div className="vc-mono text-[9px] uppercase tracking-[0.18em]" style={{ color: "var(--vc-mute)" }}>STEP_0{i + 1}</div>
+                      <div className="font-medium text-xs mt-1">{n.label}</div>
+                      <div className="text-[10px] mt-0.5" style={{ color: "var(--vc-mute)" }}>{n.sub}</div>
+                      {i < FLOW.length - 1 && (
+                        <div className="absolute top-7 left-[60%] w-[80%] h-px vc-flow-line" />
+                      )}
                     </div>
-                    <div className="vc-mono text-[9px] uppercase tracking-[0.18em]" style={{ color: "var(--vc-mute)" }}>STEP_0{i + 1}</div>
-                    <div className="font-medium text-xs mt-1">{n.label}</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: "var(--vc-mute)" }}>{n.sub}</div>
-                    {i < FLOW.length - 1 && (
-                      <div className="absolute top-7 left-[60%] w-[80%] h-px vc-flow-line" />
-                    )}
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3 mt-8 pt-6 border-t" style={{ borderColor: "var(--vc-line)" }}>

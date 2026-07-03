@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   ArrowLeft, MapPin, Clock, Phone, Instagram, Facebook, MessageCircle,
-  Leaf, WheatOff, Star, Calendar, Users, Check, ChevronDown
+  Leaf, WheatOff, Star, Calendar, Users, Check, ChevronDown, Menu, X
 } from "lucide-react";
 import restaurantHero from "@/assets/demo-restaurant.jpg";
 
@@ -79,6 +79,7 @@ const RestaurantDemo = () => {
   const [form, setForm] = useState({ name: "", date: "", time: "21:00", guests: 2, phone: "" });
   const [confirmed, setConfirmed] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>("Para empezar");
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     document.title = "Sal & Olivo · Cocina mediterránea de autor";
@@ -175,10 +176,34 @@ const RestaurantDemo = () => {
             <a href="#reserva" className="hover:text-[var(--so-terracotta)] transition-colors">Reservar</a>
             <a href="#contacto" className="hover:text-[var(--so-terracotta)] transition-colors">Contacto</a>
           </nav>
-          <Link to="/#demos" className="so-tracking text-[10px] flex items-center gap-2" style={{ color: "var(--so-mute)" }}>
+          <Link to="/#demos" className="hidden md:flex so-tracking text-[10px] items-center gap-2" style={{ color: "var(--so-mute)" }}>
             <ArrowLeft className="w-3 h-3" /> Portafolio
           </Link>
+          <button
+            className="md:hidden p-2"
+            style={{ color: "var(--so-ink)" }}
+            onClick={() => setMobileNavOpen((v) => !v)}
+            aria-label="Menú"
+            aria-expanded={mobileNavOpen}
+          >
+            {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {mobileNavOpen && (
+          <div className="md:hidden border-t" style={{ borderColor: "var(--so-line)", background: "var(--so-cream-soft)" }}>
+            <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1 text-sm" style={{ color: "var(--so-ink)" }}>
+              <a href="#carta" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--so-line)" }}>Carta</a>
+              <a href="#chef" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--so-line)" }}>El chef</a>
+              <a href="#galeria" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--so-line)" }}>Galería</a>
+              <a href="#reserva" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--so-line)" }}>Reservar</a>
+              <a href="#contacto" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--so-line)" }}>Contacto</a>
+              <Link to="/#demos" onClick={() => setMobileNavOpen(false)} className="so-tracking text-[10px] flex items-center gap-2 pt-4" style={{ color: "var(--so-mute)" }}>
+                <ArrowLeft className="w-3 h-3" /> Portafolio
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

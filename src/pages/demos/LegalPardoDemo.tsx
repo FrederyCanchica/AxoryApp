@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft, Bot, Send, ChevronRight, Scale, Briefcase, Shield, Building2,
   Users, AlertTriangle, FileText, Database, Calendar, Sparkles, Check,
-  Phone, Mail, MapPin, X
+  Phone, Mail, MapPin, X, Menu
 } from "lucide-react";
 import legalHero from "@/assets/demo-legal-pardo.jpg";
 
@@ -78,6 +78,7 @@ const LegalPardoDemo = () => {
   const [formCaseType, setFormCaseType] = useState<CaseType>("despido");
   const [formSent, setFormSent] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", details: "" });
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => { document.title = "Pardo & Asociados · Abogados laboral & empresa"; }, []);
 
@@ -209,10 +210,33 @@ const LegalPardoDemo = () => {
             <a href="#casos" className="hover:text-[var(--pa-gold)]">Casos</a>
             <a href="#consulta" className="hover:text-[var(--pa-gold)]">Consulta inicial</a>
           </nav>
-          <Link to="/#demos" className="pa-eyebrow text-[10px] flex items-center gap-2" style={{ color: "var(--pa-stone)" }}>
+          <Link to="/#demos" className="hidden lg:flex pa-eyebrow text-[10px] items-center gap-2" style={{ color: "var(--pa-stone)" }}>
             <ArrowLeft className="w-3 h-3" /> Portafolio
           </Link>
+          <button
+            className="lg:hidden p-2"
+            style={{ color: "var(--pa-slate)" }}
+            onClick={() => setMobileNavOpen((v) => !v)}
+            aria-label="Menú"
+            aria-expanded={mobileNavOpen}
+          >
+            {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {mobileNavOpen && (
+          <div className="lg:hidden border-t" style={{ borderColor: "var(--pa-line)", background: "var(--pa-paper)" }}>
+            <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1 text-sm" style={{ color: "var(--pa-slate)" }}>
+              <a href="#areas" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--pa-line)" }}>Áreas</a>
+              <a href="#proceso" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--pa-line)" }}>Cómo trabajamos</a>
+              <a href="#casos" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--pa-line)" }}>Casos</a>
+              <a href="#consulta" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--pa-line)" }}>Consulta inicial</a>
+              <Link to="/#demos" onClick={() => setMobileNavOpen(false)} className="pa-eyebrow text-[10px] flex items-center gap-2 pt-4" style={{ color: "var(--pa-stone)" }}>
+                <ArrowLeft className="w-3 h-3" /> Portafolio
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
@@ -237,14 +261,14 @@ const LegalPardoDemo = () => {
               </button>
               <a href="#consulta" className="pa-ghost">Consulta inicial gratuita</a>
             </div>
-            <div className="grid grid-cols-3 gap-6 mt-14 pt-10 border-t" style={{ borderColor: "var(--pa-line)" }}>
+            <div className="grid grid-cols-3 gap-3 md:gap-6 mt-14 pt-10 border-t" style={{ borderColor: "var(--pa-line)" }}>
               {[
                 { v: "27", l: "años de despacho" },
                 { v: "1.400+", l: "casos resueltos" },
                 { v: "24/7", l: "Lex IA atiende" },
               ].map(s => (
-                <div key={s.l}>
-                  <div className="pa-display text-3xl md:text-4xl" style={{ color: "var(--pa-slate)" }}>{s.v}</div>
+                <div key={s.l} className="min-w-0">
+                  <div className="pa-display text-2xl md:text-4xl truncate" style={{ color: "var(--pa-slate)" }}>{s.v}</div>
                   <div className="pa-eyebrow text-[9px] mt-1" style={{ color: "var(--pa-stone)" }}>{s.l}</div>
                 </div>
               ))}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   ArrowLeft, Sparkles, Heart, Calendar, Clock, MessageCircle, Gift,
-  Check, ChevronRight, Star, Bell, Smartphone, Quote, Mail
+  Check, ChevronRight, Star, Bell, Smartphone, Quote, Mail, Menu, X
 } from "lucide-react";
 import beautyHero from "@/assets/demo-beauty.jpg";
 
@@ -45,6 +45,7 @@ const BeautyDemo = () => {
 
   const [giftForm, setGiftForm] = useState({ from: "", to: "", email: "", amount: 50 });
   const [giftSent, setGiftSent] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => { document.title = "Lumière Studio · Estética & bienestar"; }, []);
 
@@ -141,10 +142,34 @@ const BeautyDemo = () => {
             <a href="#opiniones" className="hover:text-[var(--lm-gold-deep)]">Opiniones</a>
             <a href="#regalo" className="hover:text-[var(--lm-gold-deep)]">Bono regalo</a>
           </nav>
-          <Link to="/#demos" className="lm-eyebrow text-[10px] flex items-center gap-2" style={{ color: "var(--lm-mute)" }}>
+          <Link to="/#demos" className="hidden md:flex lm-eyebrow text-[10px] items-center gap-2" style={{ color: "var(--lm-mute)" }}>
             <ArrowLeft className="w-3 h-3" /> Portafolio
           </Link>
+          <button
+            className="md:hidden p-2"
+            style={{ color: "var(--lm-ink)" }}
+            onClick={() => setMobileNavOpen((v) => !v)}
+            aria-label="Menú"
+            aria-expanded={mobileNavOpen}
+          >
+            {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {mobileNavOpen && (
+          <div className="md:hidden border-t" style={{ borderColor: "var(--lm-line)", background: "var(--lm-bone)" }}>
+            <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1 text-sm" style={{ color: "var(--lm-ink)" }}>
+              <a href="#tratamientos" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--lm-line)" }}>Tratamientos</a>
+              <a href="#reserva" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--lm-line)" }}>Reservar</a>
+              <a href="#tecnologia" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--lm-line)" }}>Cómo funciona</a>
+              <a href="#opiniones" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--lm-line)" }}>Opiniones</a>
+              <a href="#regalo" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "var(--lm-line)" }}>Bono regalo</a>
+              <Link to="/#demos" onClick={() => setMobileNavOpen(false)} className="lm-eyebrow text-[10px] flex items-center gap-2 pt-4" style={{ color: "var(--lm-mute)" }}>
+                <ArrowLeft className="w-3 h-3" /> Portafolio
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
@@ -169,14 +194,14 @@ const BeautyDemo = () => {
               <a href="#reserva" className="lm-cta">Reservar tratamiento <ChevronRight className="w-3.5 h-3.5" /></a>
               <a href="#regalo" className="lm-ghost"><Gift className="w-4 h-4" /> Bono regalo</a>
             </div>
-            <div className="grid grid-cols-3 gap-6 mt-14 pt-10 border-t" style={{ borderColor: "var(--lm-line)" }}>
+            <div className="grid grid-cols-3 gap-3 md:gap-6 mt-14 pt-10 border-t" style={{ borderColor: "var(--lm-line)" }}>
               {[
                 { v: "4.9", l: "puntuación Treatwell" },
                 { v: "8 años", l: "cuidando piel" },
                 { v: "1.2k+", l: "clientas habituales" },
               ].map(s => (
-                <div key={s.l}>
-                  <div className="lm-display text-3xl md:text-4xl" style={{ color: "var(--lm-gold-deep)" }}>{s.v}</div>
+                <div key={s.l} className="min-w-0">
+                  <div className="lm-display text-2xl md:text-4xl truncate" style={{ color: "var(--lm-gold-deep)" }}>{s.v}</div>
                   <div className="lm-eyebrow text-[9px] mt-1">{s.l}</div>
                 </div>
               ))}

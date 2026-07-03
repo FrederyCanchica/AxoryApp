@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, Heart, Bot, Send } from "lucide-react";
+import { ArrowLeft, Heart, Bot, Send, Menu, X } from "lucide-react";
 
 export type Msg = { role: "ai" | "user"; text: string; slots?: string[] };
 
@@ -20,6 +20,7 @@ export const ClinicLayout = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([SCRIPT[0]]);
   const [typing, setTyping] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
 
@@ -29,6 +30,7 @@ export const ClinicLayout = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    setMobileNavOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -162,12 +164,51 @@ export const ClinicLayout = () => {
           </nav>
           <Link
             to="/#demos"
-            className="vc-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-2 shrink-0"
+            className="hidden md:flex vc-mono text-[10px] uppercase tracking-[0.18em] items-center gap-2 shrink-0"
             style={{ color: "var(--vc-mute)" }}
           >
             <ArrowLeft className="w-3 h-3" /> Portafolio
           </Link>
+          <button
+            className="md:hidden p-2 shrink-0"
+            style={{ color: "var(--vc-text)" }}
+            onClick={() => setMobileNavOpen((v) => !v)}
+            aria-label="Menú"
+            aria-expanded={mobileNavOpen}
+          >
+            {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {mobileNavOpen && (
+          <div className="md:hidden border-t" style={{ borderColor: "var(--vc-line)", background: "var(--vc-white)" }}>
+            <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1 text-sm" style={{ color: "var(--vc-mute)" }}>
+              {navItems.map((n) => (
+                <NavLink
+                  key={n.to}
+                  to={n.to}
+                  end={n.end}
+                  onClick={() => setMobileNavOpen(false)}
+                  className={({ isActive }) => `py-2.5 border-b ${isActive ? "font-medium" : ""}`}
+                  style={({ isActive }) => ({
+                    borderColor: "var(--vc-line)",
+                    color: isActive ? "var(--vc-mint-dark)" : "var(--vc-mute)",
+                  })}
+                >
+                  {n.label}
+                </NavLink>
+              ))}
+              <Link
+                to="/#demos"
+                onClick={() => setMobileNavOpen(false)}
+                className="vc-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-2 pt-4"
+                style={{ color: "var(--vc-mute)" }}
+              >
+                <ArrowLeft className="w-3 h-3" /> Portafolio
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       <Outlet context={{ openChat: () => setChatOpen(true) }} />

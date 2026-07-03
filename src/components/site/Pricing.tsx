@@ -96,12 +96,12 @@ export const Pricing = () => {
               className={cn(
                 "reveal-item relative flex flex-col",
                 p.featured
-                  ? "glow-card bg-carbon text-bone lg:-my-6 z-10 p-8 md:p-10 lg:py-14 shadow-[0_0_0_1px_#FCA311,0_24px_60px_rgba(252,163,17,0.15)]"
+                  ? "glow-card bg-carbon text-bone mt-8 lg:mt-0 lg:-my-6 z-10 p-8 md:p-10 lg:py-14 shadow-[0_0_0_1px_#FCA311,0_24px_60px_rgba(252,163,17,0.15)]"
                   : "bg-background text-foreground border border-foreground/15 opacity-[0.92] p-8 md:p-10",
               )}
             >
               {p.featured && (
-                <div className="absolute -top-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+                <div className="absolute -top-8 lg:-top-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
                   <span className="bg-[#FCA311] text-black font-mono text-[11px] uppercase tracking-widest px-3 py-1">
                     {t("pricing.recommended")}
                   </span>

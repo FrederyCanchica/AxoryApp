@@ -43,14 +43,14 @@ const ClinicHome = () => {
               </button>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 mt-14 pt-10 border-t" style={{ borderColor: "var(--vc-line)" }}>
+            <div className="grid grid-cols-3 gap-3 md:gap-6 mt-14 pt-10 border-t" style={{ borderColor: "var(--vc-line)" }}>
               {[
                 { v: "24/7", l: "asistente IA" },
                 { v: "<2 min", l: "para citar" },
                 { v: "4.9★", l: "Doctoralia" },
               ].map((s) => (
-                <div key={s.l}>
-                  <div className="vc-display text-3xl md:text-4xl" style={{ color: "var(--vc-mint-dark)" }}>{s.v}</div>
+                <div key={s.l} className="min-w-0">
+                  <div className="vc-display text-2xl md:text-4xl truncate" style={{ color: "var(--vc-mint-dark)" }}>{s.v}</div>
                   <div className="vc-mono text-[10px] uppercase tracking-[0.2em] mt-1" style={{ color: "var(--vc-mute)" }}>{s.l}</div>
                 </div>
               ))}

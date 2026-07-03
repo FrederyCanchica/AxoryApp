@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ArrowLeft, Scale, Building2, FileText, Calculator, Calendar as CalIcon, Check, ChevronRight, Clock, Shield, Users, Award } from "lucide-react";
+import { ArrowLeft, Scale, Building2, FileText, Calculator, Calendar as CalIcon, Check, ChevronRight, Clock, Shield, Users, Award, Menu, X } from "lucide-react";
 import legalHero from "@/assets/demo-legal.jpg";
 
 const SERVICES = [
@@ -30,6 +30,7 @@ const LegalDemo = () => {
   const [service, setService] = useState<string | null>(null);
   const [day, setDay] = useState<Date | null>(null);
   const [time, setTime] = useState<string | null>(null);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const days = getNextDays();
 
   useEffect(() => {
@@ -121,12 +122,34 @@ const LegalDemo = () => {
           </nav>
           <Link
             to="/#demos"
-            className="lg-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-2"
+            className="hidden md:flex lg-mono text-[10px] uppercase tracking-[0.18em] items-center gap-2"
             style={{ color: "var(--lg-mute)" }}
           >
             <ArrowLeft className="w-3 h-3" /> Portafolio
           </Link>
+          <button
+            className="md:hidden p-2"
+            style={{ color: "var(--lg-navy)" }}
+            onClick={() => setMobileNavOpen((v) => !v)}
+            aria-label="Menú"
+            aria-expanded={mobileNavOpen}
+          >
+            {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
+
+        {mobileNavOpen && (
+          <div className="md:hidden border-t" style={{ borderColor: "rgba(15,37,64,0.08)", background: "var(--lg-cream)" }}>
+            <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-1 text-sm" style={{ color: "var(--lg-mute)" }}>
+              <a href="#services" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "rgba(15,37,64,0.08)" }}>Servicios</a>
+              <a href="#booking" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "rgba(15,37,64,0.08)" }}>Reservar</a>
+              <a href="#trust" onClick={() => setMobileNavOpen(false)} className="py-2.5 border-b" style={{ borderColor: "rgba(15,37,64,0.08)" }}>Equipo</a>
+              <Link to="/#demos" onClick={() => setMobileNavOpen(false)} className="lg-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-2 pt-4">
+                <ArrowLeft className="w-3 h-3" /> Portafolio
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
@@ -151,14 +174,14 @@ const LegalDemo = () => {
               <a href="#services" className="lg-ghost">Ver servicios</a>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 mt-14 pt-10 border-t" style={{ borderColor: "rgba(15,37,64,0.12)" }}>
+            <div className="grid grid-cols-3 gap-3 md:gap-6 mt-14 pt-10 border-t" style={{ borderColor: "rgba(15,37,64,0.12)" }}>
               {[
                 { v: "25+", l: "años" },
                 { v: "1.200", l: "clientes" },
                 { v: "98%", l: "renueva" },
               ].map((s) => (
-                <div key={s.l}>
-                  <div className="lg-display text-3xl md:text-4xl">{s.v}</div>
+                <div key={s.l} className="min-w-0">
+                  <div className="lg-display text-2xl md:text-4xl truncate">{s.v}</div>
                   <div className="lg-mono text-[10px] uppercase tracking-[0.2em] mt-1" style={{ color: "var(--lg-mute)" }}>{s.l}</div>
                 </div>
               ))}
